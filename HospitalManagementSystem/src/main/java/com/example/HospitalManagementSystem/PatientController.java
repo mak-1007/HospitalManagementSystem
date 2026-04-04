@@ -22,14 +22,12 @@ public class PatientController {
             int key =patient.getPatientId();
             patientObj.put(key,patient);
 
-        return "patient addded sucessfully";
+        return "patient added successfully";
     }
 
     @GetMapping("/getPatientInfo")
-    public Patient getPatientInformation(@RequestParam("patientId")Integer patientId,@RequestParam("name")String name, @RequestParam("disease")String disease,@RequestParam("age")Integer age){
-        Patient patient = new Patient(patientId,name,disease,age);
-        patientObj.get(patient);
-        return patient;
+    public Patient getPatientInformation(@RequestParam("patientId") Integer patientId) {
+    return patientObj.get(patientId);
     }
 
 //    @GetMapping("/getPatientInfo")
@@ -43,7 +41,7 @@ public class PatientController {
     public Patient getPatientByName(@RequestParam("name")String name) {
 
         for (Patient p : patientObj.values()){
-            if (p.getName() == name) {
+            if (p.getName().equals(name)) {
                 return p;
             }
         }
@@ -52,11 +50,7 @@ public class PatientController {
 
     @GetMapping("/getAllPatients")
     public List<Patient> getAllPatients(){
-        List<Patient> patients = new ArrayList<>();
-        for(Patient p :patients){
-            patients.add(p);
-        }
-        return  patients;
+        return new ArrayList<>(patientObj.values());
     }
 
     @GetMapping ("/getPatientsListGreaterThanAge")
@@ -68,7 +62,5 @@ public class PatientController {
             }
         }
         return patients;
-
-
     }
 }
