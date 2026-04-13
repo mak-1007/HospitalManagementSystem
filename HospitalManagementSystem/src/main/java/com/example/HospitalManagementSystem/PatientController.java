@@ -24,11 +24,8 @@ public class PatientController {
     public String addPatient(@RequestBody Patient patient){
             int key =patient.getPatientId();
             patientObj.put(key,patient);
-
-        return "patient added successfully";
+            return "patient added successfully";
     }
-
-
 
     @GetMapping("/getPatientInfo")
     public Patient getPatientInformation(@RequestParam("patientId") Integer patientId) {
@@ -80,11 +77,6 @@ public class PatientController {
         return patient;
     }
 
-
-
-
-
-
     @GetMapping("/getInfoViaMultiplePathVar/{age}/{disease}")
     public  List<Patient> getInfoViaMultiplePathVar(@PathVariable("age")Integer age,@PathVariable("disease")String disease){
         List <Patient> patients=new ArrayList<>();
@@ -110,15 +102,15 @@ public class PatientController {
         }
     }
 
-    @PutMapping("updateInfoViaRequesParam")
-    public String updateInfoViaRequesParam(@RequestParam("patientId")Integer patientId,@RequestParam("disease")String disease){
+    @PutMapping("updateDiseaseViaRequesParam")
+    public String updateDiseaseViaRequesParam(@RequestParam("patientId")Integer patientId,@RequestParam("disease")String disease){
         if (patientObj.containsKey(patientId)){
             Patient patient=patientObj.get(patientId);
             patient.setDisease(disease);
             patientObj.put(patientId,patient);
-            return "Info updated successfully";
+            return "Disease updated successfully";
         }else {
-            return "data is not existing";
+            return "patientId is not existing";
         }
     }
 }

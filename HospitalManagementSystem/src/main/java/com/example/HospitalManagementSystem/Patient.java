@@ -1,5 +1,5 @@
 package com.example.HospitalManagementSystem;
-
+//obj class
 public class Patient {
     private  int patientId;
     private String name;
