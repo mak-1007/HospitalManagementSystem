@@ -9,25 +9,26 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@RequestMapping("/Patient")
 public class PatientController {
     HashMap<Integer, Patient> patientObj =new HashMap<>();
 
 
-    @PostMapping("/addPatientViaRequestParameter")
+    @PostMapping("/addViaRequestParameter")
     public String addPatient(@RequestParam("patientId")Integer patientId,@RequestParam("name")String name, @RequestParam("disease")String disease,@RequestParam("age")Integer age){
         Patient patient=new Patient(patientId,name,disease,age);
         patientObj.put(patientId,patient);
         return "patient addded sucessfully";
     }
 
-    @PostMapping("/addPatientViaRequestBody")
+    @PostMapping("/addViaRequestBody")
     public String addPatient(@RequestBody Patient patient){
             int key =patient.getPatientId();
             patientObj.put(key,patient);
             return "patient added successfully";
     }
 
-    @GetMapping("/getPatientInfo")
+    @GetMapping("/getInfo")
     public Patient getPatientInformation(@RequestParam("patientId") Integer patientId) {
     return patientObj.get(patientId);
     }
@@ -40,7 +41,7 @@ public class PatientController {
 
 
 
-    @GetMapping("/getPatientByName")
+    @GetMapping("/getByName")
     public Patient getPatientByName(@RequestParam("name")String name) {
 
         for (Patient p : patientObj.values()){
@@ -52,13 +53,13 @@ public class PatientController {
     }
 
 
-    @GetMapping("/getAllPatients")
+    @GetMapping("/getAll")
     public List<Patient> getAllPatients(){
         return new ArrayList<>(patientObj.values());
     }
 
 
-    @GetMapping ("/getPatientsListGreaterThanAge")
+    @GetMapping ("/getListGreaterThanAge")
     public  List<Patient> getPatientsListGreaterThanAge(@RequestParam("age")Integer age){
         List<Patient> patients=new ArrayList<>();
         for (Patient p: patientObj.values()){
@@ -89,7 +90,7 @@ public class PatientController {
     }
 
 
-    @PutMapping("/updatePatientInfo")
+    @PutMapping("/updateInfo")
     public String updatePatientInfo(@RequestBody Patient patient){
         int key = patient.getPatientId();
         if (patientObj.containsKey(key)){
