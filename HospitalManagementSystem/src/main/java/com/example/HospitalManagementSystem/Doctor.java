@@ -14,6 +14,7 @@ public class Doctor {
         this.age=age;
         this.degree=degree;
     }
+
     public int getDoctorId(){
         return  doctorId;
     }

@@ -12,9 +12,15 @@ import java.util.HashMap;
 @RequestMapping("/Doctor")
 public class DoctorController {
     HashMap<Integer, Doctor> DoctorDB = new HashMap<>();
+
     public Doctor add(@RequestBody Doctor doctor){
         int key = doctor.getDoctorId();
         DoctorDB.put(key,doctor);
         return doctor;
     }
+
+    //APIs of
+    //get dr.
+    // update dr.
+    // delete dr.
 }

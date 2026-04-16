@@ -39,8 +39,6 @@ public class PatientController {
 //        return patient;
 //    }
 
-
-
     @GetMapping("/getByName")
     public Patient getPatientByName(@RequestParam("name")String name) {
 
@@ -51,8 +49,6 @@ public class PatientController {
         }
         return null;
     }
-
-
     @GetMapping("/getAll")
     public List<Patient> getAllPatients(){
         return new ArrayList<>(patientObj.values());
@@ -69,15 +65,12 @@ public class PatientController {
         }
         return patients;
     }
-
-
     @GetMapping("/getInfoViaPathVar/{patientId}")
     public Patient getInfoViaPathVar(@PathVariable("patientId")Integer patientId){
 
         Patient patient = patientObj.get(patientId);
         return patient;
     }
-
     @GetMapping("/getInfoViaMultiplePathVar/{age}/{disease}")
     public  List<Patient> getInfoViaMultiplePathVar(@PathVariable("age")Integer age,@PathVariable("disease")String disease){
         List <Patient> patients=new ArrayList<>();
@@ -88,7 +81,6 @@ public class PatientController {
         }
         return patients;
     }
-
 
     @PutMapping("/updateInfo")
     public String updatePatientInfo(@RequestBody Patient patient){
