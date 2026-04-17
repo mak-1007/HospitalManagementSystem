@@ -5,7 +5,7 @@ This project demonstrates how to create and manage patient records using **RESTf
 
 ---
 
-## 🚀 Features
+##  Features
 
 * ➕ Add patient (via Request Params & Request Body)
 * 🔍 Get patient details
